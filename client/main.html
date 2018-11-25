@@ -1,0 +1,82 @@
+<head>
+    <title>Demo</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="/DymoPrinter.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <h1 class="display-4">Tag Printer</h1>
+        <form>
+            <div class="card-deck">
+                {{>cardForm position="top"}}
+                {{>cardForm position="bottom"}}
+                {{>printCard}}
+            </div>
+        </form>
+    </div>
+</body>
+<template name="cardForm">
+    <div class="card">
+        <div class="card-body">
+            <div class="form-group">
+                <select class="form-control" id="tagIdSelector">
+                    <option value="A">Anklet</option>
+                    <option value="B">Bracelet</option>
+                    <option value="C">Chain</option>
+                    <option value="P">Pendant</option>
+                    <option value="N">Necklace</option>
+                    <option value="R">Ring</option>
+                    <option value="S">Slide</option>
+                    <option value="M">Mens</option>
+                </select>
+                <input id="tagId" class="form-control" type="text" placeholder="{{tagId}}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="tagFront2">Cost:</label>
+                <input type="text" class="form-control" id="tagFront2" placeholder="tagFront2: Example input">
+            </div>
+            <div class="form-group">
+                <label for="tagFront3">Price:</label>
+                <input type="text" class="form-control" id="tagFront3" placeholder="tagFront3: Example input">
+            </div>
+            <div class="form-group">
+                <label for="tagBack1">Vendor:</label>
+                <input type="text" class="form-control" id="tagBack1" placeholder="tagBack1: Example input">
+            </div>
+            <div class="form-group">
+                <label for="tagBack2">Description Line 1:</label>
+                <input type="text" class="form-control" id="tagBack2" placeholder="tagBack2: Example input">
+            </div>
+            <div class="form-group">
+                <label for="tagBack3">Description Line 2:</label>
+                <input type="text" class="form-control" id="tagBack3" placeholder="tagBack3: Example input">
+            </div>
+        </div>
+    </div>
+</template>
+<template name="printCard">
+    <div class="card">
+        <div class="card-body bg-light">
+            The tag preview:
+            <div class="content">
+                <div id="labelImageDiv">
+                    <img id="labelImage" src="" alt="label preview"/>
+                </div>
+                    <div class="printControls">
+                        <div id="printersDiv">
+                            <label for="printersSelect">Printer:</label>
+                            <select id="printersSelect"></select>
+                        </div>
+                        <div id="printDiv">
+                            <button id="printButton">Print</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</template>
