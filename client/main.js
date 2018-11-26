@@ -16,7 +16,6 @@ tagAssembler = function() {
 
 Template.printCard.events({
 	'click #printButton'(e){
-		e.preventDefault();
 		var tags = tagAssembler()
 		tags.forEach(function(tag) {
 			tag["idnum"] =  parseInt(tag["tagIdSelector"].substring(2))
@@ -102,6 +101,11 @@ Template.cardForm.events({
         }
 
         Session.set(Template.instance().data.position + $(e.target).attr("id"), key + doc);
+
+        if (Session.get("top"+ $(e.target).attr("id")) == Session.get("bottom"+ $(e.target).attr("id"))) {
+            doc = doc + 1
+        	Session.set(Template.instance().data.position + $(e.target).attr("id"), key + doc);
+        }
         label = dymo.label.framework.openLabelXml(getLabelXml(tagAssembler()));
         updatePreview(label);
     },
